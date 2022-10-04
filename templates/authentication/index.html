@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <style>
+        .center {
+          margin: auto;
+          width: 60%;
+          border: 3px solid #73AD21;
+          padding: 10px;
+        }
+        a:hover{
+            color: blueviolet;
+        }
+        a :active{
+            color: blue;
+        }
+        a::selection{
+            color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message: </strong>{{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endfor %}
+
+
+<h3>Welcome To Your Registration Page.</h3>
+
+{% if user.is_authenticated %}
+    <h3>Hello {{ fname }} </h3>
+    <h4>Your have logged in successfully.</h4>
+    <button type="submit"><a href="signout">Signout</a></button>
+
+
+{% else %}
+    <button type="submit"><a href="/signup">Signup</a></button>
+    <button type="submit"><a href="/signin">Signin</a></button>
+{% endif %}
+
+</body>
+</html>
